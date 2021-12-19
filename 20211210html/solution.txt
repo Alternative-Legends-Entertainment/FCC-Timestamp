@@ -1,0 +1,62 @@
+
+
+//Note that date_string value as string and integers are handled differently inside the date method
+//"1" will not return the same vaue as 1.
+
+var date_string="";
+const d = new Date(date_string);
+// console.log(JSON.stringify(d.toUTCString()));
+// console.log(JSON.stringify(d.getTime(date_string)));
+
+
+function myTimeStamp() {
+
+
+var error = {error: "Invalid Date"};
+    
+    // lets set up logic to handle a unix input
+    if (!isNaN(date_string)&!date_string==="") {
+        myUTCString = d.toUTCString();
+        myUnix = d.getTime(date_string);
+        myJSON={unix: myUnix, UTC: myUTCString}
+        // console.log("myUnix " + JSON.stringify(myUnix));
+        // console.log("myUTX " + JSON.stringify(myUTCString));
+        console.log("#1 " + JSON.stringify(myJSON));
+        
+    //    console.log("What day is it?" + " " + myUTCString + " " + myUnix); 
+    }
+
+    // lets set up logic to handle UTC string input
+    if (date_string.includes("-")) {
+        
+        myUTCString = d.toUTCString();
+        myUnix = d.getTime(date_string);
+        myJSON={unix: myUnix, UTC: myUTCString}
+        // console.log("myUnix " + JSON.stringify(myUnix));
+        // console.log("myUTX " + JSON.stringify(myUTCString));
+        console.log("#2 " + JSON.stringify(myJSON));
+        // console.log("What day is it?" + " " + myUTCString + " " + myUnix);
+    }
+
+    if(date_string==="") {
+        const now = new Date();
+        myUTCString = now.toUTCString();
+        myUnix = now.getTime();
+            myJSON={unix: myUnix, UTC: myUTCString}
+            console.log("#3 " + JSON.stringify(myJSON));
+            // console.log(myUTCString + " " + myUnix);
+    }
+
+   else {
+       console.log(error);
+   }
+    
+   
+    // console.log(d.toUTCString());
+    // console.log(d.getTime())
+    
+    
+}
+
+myTimeStamp();
+
